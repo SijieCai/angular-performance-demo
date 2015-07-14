@@ -1,0 +1,30 @@
+{
+  "name": "angular-performance-demo",
+  "version": "0.0.0",
+  "main": "app/index.html",
+  "keywords": [
+    "angularjs",
+    "angualr",
+    "digest",
+    "cycle",
+    "watcher",
+    "once-bind"
+  ],
+  "authors": [
+    "蔡斯杰 owen"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "*",
+    "angular": "~1.2",
+    "ng-stats": "*",
+    "angular-gettext": "*"
+  }
+}

@@ -1,0 +1,43 @@
+<div style="width:350px; background: gray;"  ng-controller="ngWidgetController">
+    <div class="my-margin" ng-style="{background:item.isMale ? 'green': 'red'}" ng-repeat="item in items">
+        <div class="row">
+            <div class="col-md-3 text-right">{{'名字'| translate}}:</div>
+            <div class="col-md-6">{{item.name}}</div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right">{{'年龄'| translate}}:</div>
+            <div class="col-md-6">{{item.age}}</div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right">{{'电话一'| translate}}:</div>
+            <div class="col-md-6">{{item.homePhone}}</div>
+            <div class="col-md-3">
+                <button type="button" ng-click="dial(item.homePhone)" class="btn btn-xs">拨打</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right">{{'电话二'| translate}}:</div>
+            <div class="col-md-6">{{item.phone}}</div>
+            <div class="col-md-3">
+                <button type="button" ng-click="dial(item.phone)" class="btn btn-xs">拨打</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right">{{'住址一'| translate}}:</div>
+            <div class="col-md-6">{{item.address}}</div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right">{{'邮件'| translate}}:</div>
+            <div class="col-md-6">{{item.email}}</div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right">{{'账户'| translate}}:</div>
+            <div class="col-md-6">{{item.account | currency}}</div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

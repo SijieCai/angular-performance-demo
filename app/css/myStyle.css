@@ -1,0 +1,63 @@
+.my-fill {
+	margin: 0;
+	padding: 0
+    width: 100%;
+    height: 100%;
+}
+.my-widgets-group {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.my-widgets-group__widget {
+    height: 100%;
+    position: relative;
+    flex: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.my-padding {
+    padding: 15px;
+}
+.my-margin {
+    margin: 15px;
+}
+
+.my-menu {
+    color: #fff;
+    background: #1db0cd;
+    min-height: 66px
+}
+
+.my-flex-column {
+	display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: scroll;
+}
+
+.my-flex-row {
+	display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: scroll;
+}
+
+.my-flex-item--fill {
+    flex: 1 0 auto;
+}
+
+.my-flex-item {
+	flex: 0 0 auto;
+}
+
+.my-navigate {
+    color: #aab2b4;
+    background: #045374;
+}
+
+.my-main {
+    background:#f1f4f5;
+}
