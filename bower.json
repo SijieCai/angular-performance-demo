@@ -23,8 +23,9 @@
   ],
   "dependencies": {
     "bootstrap": "*",
-    "angular": "~1.2",
-    "ng-stats": "*",
-    "angular-gettext": "*"
+    "angular": "*",
+    "angular-gettext": "*",
+    "angular-ui-router": "*",
+    "ng-stats": "*"
   }
 }

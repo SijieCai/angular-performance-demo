@@ -1,0 +1,9 @@
+<div ng-controller="digestController" class="my-padding">
+    <a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest">官方解释</a>
+    <h1>每一次 angular event loop 对触发digest循环过程，循环至少进行两次</h1>
+    
+    <input ng-model="abc" />
+    <button ng-click="inc()">增加value</button>
+    <div>value = {{value}}</div>
+    <img src="resource/concepts-runtime.png">
+</div>

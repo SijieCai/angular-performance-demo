@@ -1,6 +1,6 @@
 .my-fill {
 	margin: 0;
-	padding: 0
+	padding: 0;
     width: 100%;
     height: 100%;
 }
@@ -11,12 +11,24 @@
     height: 100%;
 }
 
+.my-scroll-x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.my-scroll-y {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.my-scroll {
+    overflow: scroll;
+}
+
 .my-widgets-group__widget {
     height: 100%;
     position: relative;
     flex: auto;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 .my-padding {
     padding: 15px;
@@ -35,14 +47,12 @@
 	display: flex;
     flex-direction: column;
     position: relative;
-    overflow: scroll;
 }
 
 .my-flex-row {
 	display: flex;
     flex-direction: row;
     position: relative;
-    overflow: scroll;
 }
 
 .my-flex-item--fill {
