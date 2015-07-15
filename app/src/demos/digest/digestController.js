@@ -7,7 +7,7 @@
             digest++;
             console.log('Digest Loop被执行' + digest + '次');
 
-            if($scope.value >= 4 && $scope.value < 10){
+            if ($scope.value >= 4 && $scope.value < 10) {
                 $scope.value++;
             }
         });
@@ -17,6 +17,16 @@
             digest = 0;
             console.log('点击事件');
         }
+
+
+        $scope.getUnchangedValue = function() {
+            // time consuming operation
+            // for (var i = 0; i < 3000000000; i++) {
+            //     i = Math.sqrt(100) + i;
+            // }
+            return i;
+        }
+        $scope.unchangedValue = $scope.getUnchangedValue();
 
     }]);
 
