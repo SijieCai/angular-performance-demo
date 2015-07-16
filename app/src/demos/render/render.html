@@ -1,16 +1,11 @@
-<div class="my-flex-item--fill my-flex-column" ng-controller="renderController">
-    <div class="my-flex-item my-padding">
-        <a class="btn btn-default" href="#" role="button">Link</a> 
-        <a class="btn btn-default" href="#" role="button">代码</a> 
-        <a class="btn btn-default" href="#" role="button">Link</a> 
-        <a class="btn btn-default" href="#" role="button">Link</a> 
-        <h1>浏览器Render</h1>
-        <input ng-model="abc" style="width: 500px" />
-        <button ng-click="start()">开始1</button>
-        <button ng-click="start2()">开始2</button>
+<div class='my-flex-item--fill my-flex-column'>
+    <div class='my-flex-item my-padding'>
+        <a class='btn btn-default' ui-sref='.desc' role='button'>需求</a>
+        <a class='btn btn-default' ui-sref='.demo' role='button'>效果</a>  
+        <a class='btn btn-default' ui-sref='.code1' role='button'>一般方法代码</a> 
+        <a class='btn btn-default' ui-sref='.code2' role='button'>优化方法代码</a>
     </div>
-    <div class="my-flex-item--fill my-flex-column">
-        <div class="my-fill my-scroll-y render-container" style="position: absolute">
-        </div>
+    <div ui-view class='my-flex-item--fill my-flex-column'>
+        
     </div>
 </div>

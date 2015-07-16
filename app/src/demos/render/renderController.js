@@ -1,57 +1,77 @@
 (function() {
     var module = angular.module('app');
-    module.controller('renderController', ['$scope', function($scope) {
+    module.controller('renderDemoController', ['$scope', function($scope) {
         var ele = $('.render-container');
-        var number = 10000;
+        var number = 5000;
+
+        function runCallbackAndOutputTime(name, callback) {
+            var startTime = new Date();
+            callback();
+            var seconds = ((new Date()).getTime() - startTime.getTime()) / 1000;
+            $scope[name] = seconds + '秒';
+        }
+
+        function buildButton(i) {
+            return '<button style="width:100px;height:100px;margin:8px" id="button' + i + '"></button>';
+        }
+
+        function updateButton(i, position) {
+            var x = Math.ceil(position.left);
+            var y = Math.ceil(position.top);
+            $('#button' + i).html('button' + i + '<br/>x:' + x + '<br/>y: ' + y + '<br/>');
+        }
+
+        function getPosition(i) {
+            return $('#button' + i).position();
+        }
+
         $scope.start = function() {
-
             ele.empty();
-            console.log('开始1:' + new Date());
-            for (var i = 0; i < number; i++) {
-                var appendEle = ele.append('<button style="width:100px;height:100px;margin:8px" id="button' + i + '" class="my-flex-item"></button>');
-                var position = $('#button' + i).position();
 
-                var x = Math.floor(position.left);
-                var y = Math.floor(position.top);
-                $('#button' + i).html('button<br/>x:' + x + '<br/>y: ' + y + '<br/>');
-            }
-
-            console.log('完成1:' + new Date());
+            runCallbackAndOutputTime('time1', function() {
+                for (var i = 0; i < number; i++) {
+                    ele.append(buildButton(i));
+                    updateButton(i, getPosition(i));
+                }
+            });
         };
 
         $scope.start2 = function() {
-
             ele.empty();
 
-            console.log('开始2:' + new Date());
-            for (var i = 0; i < number; i++) {
-                var appendEle = ele.append('<button style="width:100px;height:100px;margin:8px" id="button' + i + '" class="my-flex-item">abc <br/> Coords: x , y <br/></button>');
-            }
+            runCallbackAndOutputTime('time2', function() {
+                for (var i = 0; i < number; i++) {
+                    var appendEle = ele.append(buildButton(i));
+                }
 
-            var cors = [];
-            for (i = 0; i < number; i++) {
-                var position = $('#button' + i).position();
+                var positions = [];
+                for (i = 0; i < number; i++) {
+                    positions.push($('#button' + i).position());
+                }
 
-                var x = Math.floor(position.left);
-                var y = Math.floor(position.top);
-                cors.push({
-                    x: x,
-                    y: y
-                });
-            }
-            for (i = 0; i < number; i++) {
-                $('#button' + i).html('button<br/>x: ' + cors[i].x + '<br/>y:' + cors[i].y + '<br/>');
-            }
-
-            console.log('开始2:' + new Date());
+                for (i = 0; i < number; i++) {
+                    updateButton(i, positions[i]);
+                }
+            });
         };
     }]);
 
     module.config(function($stateProvider, $urlRouterProvider) {
-
         $stateProvider.state('render', {
-            url: "/demos/render",
-            templateUrl: "src/demos/render/render.html"
+            url: '/demos/render',
+            templateUrl: 'src/demos/render/render.html'
+        }).state('render.desc', {
+            url: '/demos/render/desc',
+            templateUrl: 'src/demos/render/desc.html'
+        }).state('render.demo', {
+            url: '/demos/render/demo',
+            templateUrl: 'src/demos/render/demo.html'
+        }).state('render.code1', {
+            url: '/demos/render/code1',
+            templateUrl: 'src/demos/render/code1.html'
+        }).state('render.code2', {
+            url: '/demos/render/code2',
+            templateUrl: 'src/demos/render/code2.html'
         });
 
     });
