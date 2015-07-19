@@ -1,0 +1,43 @@
+<div style="width:350px; background: gray;"  ng-controller="ngWidgetController">
+    <div class="my-margin" once-style="{background:item.isMale ? 'green': 'red'}" ng-repeat="item in items">
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'名字'| translate"></div>
+            <div class="col-md-6" once-text="item.name"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'年龄'| translate"></div>
+            <div class="col-md-6" once-text="item.age"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'电话一'| translate"></div>
+            <div class="col-md-6" once-text="item.homePhone"></div>
+            <div class="col-md-3">
+                <button type="button" ng-click="dial(item.homePhone)" class="btn btn-xs" once-text="'拨打'|translate"></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'电话二'| translate"></div>
+            <div class="col-md-6" once-text="item.phone"></div>
+            <div class="col-md-3">
+                <button type="button" ng-click="dial(item.phone)" class="btn btn-xs" once-text="'拨打'|translate"></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'住址一'| translate"></div>
+            <div class="col-md-6" once-text="item.address"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'邮件'| translate"></div>
+            <div class="col-md-6" once-text="item.email"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right" once-text="'账户'| translate"></div>
+            <div class="col-md-6" once-text="item.account | currency"></div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

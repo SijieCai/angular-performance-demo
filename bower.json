@@ -26,6 +26,7 @@
     "angular": "*",
     "angular-gettext": "*",
     "angular-ui-router": "*",
+    "angular-once": "*",
     "ng-stats": "*"
   }
 }

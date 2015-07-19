@@ -1,7 +1,7 @@
 (function() {
     var module = angular.module('app');
     module.controller('renderDemoController', ['$scope', function($scope) {
-        var ele = $('.render-container');
+        var container = $('.render-container');
         var number = 5000;
 
         function runCallbackAndOutputTime(name, callback) {
@@ -26,22 +26,22 @@
         }
 
         $scope.start = function() {
-            ele.empty();
+            container.empty();
 
             runCallbackAndOutputTime('time1', function() {
                 for (var i = 0; i < number; i++) {
-                    ele.append(buildButton(i));
+                    container.append(buildButton(i));
                     updateButton(i, getPosition(i));
                 }
             });
         };
 
         $scope.start2 = function() {
-            ele.empty();
+            container.empty();
 
             runCallbackAndOutputTime('time2', function() {
                 for (var i = 0; i < number; i++) {
-                    var appendEle = ele.append(buildButton(i));
+                    var appendEle = container.append(buildButton(i));
                 }
 
                 var positions = [];
@@ -55,23 +55,77 @@
             });
         };
     }]);
+    module.controller('directiveDemoController', ['$scope', '$timeout', function($scope, $timeout) {
+        $scope.array1 = [];
+        $scope.array2 = [];
+        $scope.clear = function() {
+            $scope.array1 = [];
+            $scope.array2 = [];
+        };
+
+        var number = 5000;
+        $scope.create1 = function() {
+            $scope.clear();
+            $timeout(function() {
+                for (var i = 0; i < number; i++) {
+                    $scope.array1.push(i);
+                }
+            });
+        };
+
+        $scope.create2 = function() {
+            $scope.clear();
+            $timeout(function() {
+                for (var i = 0; i < number; i++) {
+                    $scope.array2.push(i + 5000);
+                }
+            });
+
+        };
+
+    }]);
+    module.directive('buttonNormal', function() {
+        return {
+            restrict: 'E',
+            replace: true,
+            template: '<button style="width:100px;height:100px;margin:8px">{{name}}<br/> X:{{x}}<br/> Y:{{y}}</button>',
+            link: function(scope, element, attr) {
+                scope.name = 'button' + scope.$eval(attr.index);
+                var position = element.position();
+                scope.x = Math.ceil(position.left);
+                scope.y = Math.ceil(position.top);
+            }
+        };
+    });
+
+    module.directive('buttonAsync', function() {
+        return {
+            restrict: 'E',
+            replace: true,
+            template: '<button style="width:100px;height:100px;margin:8px">{{name}}<br/> X:{{x}}<br/> Y:{{y}}</button>',
+            link: function(scope, element, attr) {
+                scope.name = 'button' + scope.$eval(attr.index);
+
+                scope.$evalAsync(function() {
+                    var position = element.position();
+                    scope.x = Math.ceil(position.left);
+                    scope.y = Math.ceil(position.top);
+                });
+
+            }
+        };
+    });
 
     module.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider.state('render', {
             url: '/demos/render',
             templateUrl: 'src/demos/render/render.html'
-        }).state('render.desc', {
-            url: '/demos/render/desc',
-            templateUrl: 'src/demos/render/desc.html'
-        }).state('render.demo', {
-            url: '/demos/render/demo',
-            templateUrl: 'src/demos/render/demo.html'
-        }).state('render.code1', {
-            url: '/demos/render/code1',
-            templateUrl: 'src/demos/render/code1.html'
-        }).state('render.code2', {
-            url: '/demos/render/code2',
-            templateUrl: 'src/demos/render/code2.html'
+        }).state('render.demoJquery', {
+            url: '/demos/render/demoJquery',
+            templateUrl: 'src/demos/render/demoJquery.html'
+        }).state('render.demoNg', {
+            url: '/demos/render/demoNg',
+            templateUrl: 'src/demos/render/demoNg.html'
         });
 
     });

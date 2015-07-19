@@ -16,6 +16,10 @@
         $scope.addWidget = function() {
             $scope.widgets.push({});
         };
+        $scope.addOnceWidget= function(){
+            $scope.onceWidgets = $scope.onceWidgets || [];
+            $scope.onceWidgets.push({});
+        }
     }]);
 
     module.config(function($stateProvider, $urlRouterProvider) {

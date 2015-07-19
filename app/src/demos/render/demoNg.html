@@ -1,0 +1,17 @@
+<div class='my-fill my-scroll-y' style='position: absolute' ng-controller="directiveDemoController">
+    <div class="my-margin">
+        <h1>往容器添加5000个100 * 100 drective，在directive里面获取坐标并显示</h1>
+        <div style="margin: 8px">
+            <button ng-click='create1()'>一般方法</button>
+            <span>所需时间 {{time1}}</span>
+        </div>
+        <div style="margin: 8px">
+            <button ng-click='create2()'>优化方法</button>
+            <span> 所需时间 {{time2}}</span>
+        </div>
+    </div>
+    <div>
+        <button-normal index="item" ng-repeat="item in array1"></button-normal>
+        <button-async index="item" ng-repeat="item in array2"></button-async>
+    </div>
+</div>
