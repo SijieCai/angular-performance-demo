@@ -1,9 +1,15 @@
 <div class='my-flex-item--fill my-flex-column'>
     <div class='my-flex-item my-padding'>
-        <a class='btn btn-default' ui-sref='.demoJquery' role='button'>JQuery演示</a>  
-        <a class='btn btn-default' ui-sref='.demoNg' role='button'>Angular演示</a>
+        <a class='btn btn-default' ui-sref='render' role='button'>例子介绍</a>
+        <a class='btn btn-default' ui-sref='.demoJquery' role='button'>JQuery演示</a>
+        <a class='btn btn-default' ui-sref='.demoAngular' role='button'>Angular演示</a>
     </div>
     <div ui-view class='my-flex-item--fill my-flex-column'>
-        
+        <div class="my-margin">
+            下面这两个例子演示了
+            <h1>1 浏览器渲染的特性和性能的优化实现</h1>
+            <h1>2 一次揭露Digest的设计背后原理</h1>
+            <h1>3 使用$evalAsync对性能的影响</h1>
+        </div>
     </div>
 </div>

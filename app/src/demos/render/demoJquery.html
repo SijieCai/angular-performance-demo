@@ -1,15 +1,61 @@
 <div class='my-fill my-scroll-y' style='position: absolute' ng-controller="renderDemoController">
     <div class="my-margin">
-        <h1>用JQuery往容器添加5000个100 * 100的，盒子上显示坐标</h1>
+        <h1>用JQuery往容器添加5000个100 * 100的button，button的内容显示x，y坐标</h1>
         <div style="margin: 8px">
             <button ng-click='start()'>一般方法</button>
             <span>所需时间 {{time1}}</span>
+            <button ng-click="showCode = !showCode">代码</button>
         </div>
         <div style="margin: 8px">
             <button ng-click='start2()'>优化方法</button>
             <span> 所需时间 {{time2}}</span>
+            <button ng-click="showCodeOptimized = !showCodeOptimized">代码</button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6"><pre ng-show="showCode"><code class="javascript">
+//一般方法代码
+$scope.start = function() {
+    container.empty();
+
+    runCallbackAndOutputTime('time1', function() {
+        for (var i = 0; i < number; i++) {
+            container.append(buildButton(i));
+            updateButton(i, getPosition(i));
+        }
+    });
+};
+</code></pre>
+</div>
+        <div class="col-md-6">
+            <pre ng-show="showCodeOptimized"><code class="JavaScript">  
+//优化代码
+$scope.start2 = function() {
+    container.empty();
+
+    runCallbackAndOutputTime('time2', function() {
+        for (var i = 0; i < number; i++) {
+            var appendEle = container.append(buildButton(i));
+        }
+
+        var positions = [];
+        for (i = 0; i < number; i++) {
+            positions.push($('#button' + i).position());
+        }
+
+        for (i = 0; i < number; i++) {
+            updateButton(i, positions[i]);
+        }
+    });
+};
+</code></pre>
+
+        </div>
+    </div>
+
+
+
+
     <div class="render-container">
     </div>
 </div>

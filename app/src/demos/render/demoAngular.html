@@ -1,0 +1,59 @@
+<div class='my-fill my-scroll-y' style='position: absolute' ng-controller="directiveDemoController">
+    <div class="my-margin">
+        <h1>往容器添加5000个100 * 100 drective，在directive里面获取坐标并显示</h1>
+        <div style="margin: 8px">
+            <button ng-click='create1()'>一般方法</button>
+            <span>所需时间 {{time1}}</span>
+            <button ng-click="showCode = !showCode">代码</button>
+        </div>
+        <div style="margin: 8px">
+            <button ng-click='create2()'>优化方法</button>
+            <span> 所需时间 {{time2}}</span>
+            <button ng-click="showCodeOptimized = !showCodeOptimized">代码</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><pre ng-show="showCode"><code class="javascript">
+module.directive('buttonNormal', function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        template: '<button style="width:100px;height:100px;margin:8px">{{name}}<br/> X:{{x}}<br/> Y:{{y}}</button>',
+        link: function(scope, element, attr) {
+            scope.name = 'button' + scope.$eval(attr.index);
+            var position = element.position();
+            scope.x = Math.ceil(position.left);
+            scope.y = Math.ceil(position.top);
+        }
+    };
+});
+    </code></pre>
+    </div>
+        <div class="col-md-6">
+            <pre ng-show="showCodeOptimized"><code class="JavaScript">  
+//优化代码
+module.directive('buttonAsync', function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        template: '<button style="width:100px;height:100px;margin:8px">{{name}}<br/> X:{{x}}<br/> Y:{{y}}</button>',
+        link: function(scope, element, attr) {
+            scope.name = 'button' + scope.$eval(attr.index);
+
+            scope.$evalAsync(function() {
+                var position = element.position();
+                scope.x = Math.ceil(position.left);
+                scope.y = Math.ceil(position.top);
+            });
+
+        }
+    };
+});
+            </code></pre>
+        </div>
+    </div>
+    <div>
+        <button-normal index="item" ng-repeat="item in array1"></button-normal>
+        <button-async index="item" ng-repeat="item in array2"></button-async>
+    </div>
+</div>

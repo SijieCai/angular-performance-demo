@@ -1,5 +1,6 @@
 (function() {
     var module = angular.module('app');
+
     module.controller('renderDemoController', ['$scope', function($scope) {
         var container = $('.render-container');
         var number = 5000;
@@ -54,6 +55,11 @@
                 }
             });
         };
+
+
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
     }]);
     module.controller('directiveDemoController', ['$scope', '$timeout', function($scope, $timeout) {
         $scope.array1 = [];
@@ -77,12 +83,15 @@
             $scope.clear();
             $timeout(function() {
                 for (var i = 0; i < number; i++) {
-                    $scope.array2.push(i + 5000);
+                    $scope.array2.push(i);
                 }
             });
-
         };
 
+
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
     }]);
     module.directive('buttonNormal', function() {
         return {
@@ -97,7 +106,6 @@
             }
         };
     });
-
     module.directive('buttonAsync', function() {
         return {
             restrict: 'E',
@@ -115,7 +123,6 @@
             }
         };
     });
-
     module.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider.state('render', {
             url: '/demos/render',
@@ -123,9 +130,9 @@
         }).state('render.demoJquery', {
             url: '/demos/render/demoJquery',
             templateUrl: 'src/demos/render/demoJquery.html'
-        }).state('render.demoNg', {
-            url: '/demos/render/demoNg',
-            templateUrl: 'src/demos/render/demoNg.html'
+        }).state('render.demoAngular', {
+            url: '/demos/render/demoAngular',
+            templateUrl: 'src/demos/render/demoAngular.html'
         });
 
     });
