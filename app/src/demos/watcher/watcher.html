@@ -1,28 +1,14 @@
 <div class="my-flex-item--fill my-flex-column" ng-controller="watcherController">
-    <div class="my-flex-item my-padding" style="padding-bottom:0">
-        <h1>测试性能</h1>
-        <input ng-model="abc" style="width: 500px" />
-        <button ng-click="addWidget()">添加模块</button>
-        <button ng-click="addOnceWidget()">添加模块二</button>
+    <div class='my-flex-item my-padding'>
+        <a class='btn btn-default' ui-sref='watcher' role='button'>例子介绍</a>
+        <a class='btn btn-default' ui-sref='.demo' role='button'>演示</a>
+        <a class='btn btn-default' ui-sref='.summary' role='button'>最佳实践</a>
     </div>
-    <div class="my-flex-item--fill my-flex-row">
-        <div class="my-flex-item--fill my-flex-row my-fill my-scroll-x" style="position: absolute">
-            <div class="my-flex-item--fill my-flex-row">
-                <div ng-repeat="widget in widgets" class="my-flex-item" style="width: 350px; margin-right:30px;">
-                    <div class="my-widgets-group">
-                        <div class="my-widgets-group__widget my-scroll-y my-margin">
-                            <div ng-include="'src/demos/watcher/ngWidget.html'"></div>
-                        </div>
-                    </div>
-                </div>
-                <div ng-repeat="widget in onceWidgets" class="my-flex-item" style="width: 350px; margin-right:30px;">
-                    <div class="my-widgets-group">
-                        <div class="my-widgets-group__widget my-scroll-y my-margin">
-                            <div ng-include="'src/demos/watcher/onceWidget.html'"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div ui-view class="my-flex-item--fill my-flex-row">
+        <div class="my-margin">
+            <h1>了解Watcher</h1>
+            <h2>getValue, value, oldValue, callback</h2>
+            <img src="resource/concepts-runtime.png" />
         </div>
     </div>
 </div>

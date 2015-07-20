@@ -87,15 +87,13 @@
                 }
             });
         };
-
-
         $('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
     }]);
     module.directive('buttonNormal', function() {
         return {
-            restrict: 'E',
+            restrict: 'AE',
             replace: true,
             template: '<button style="width:100px;height:100px;margin:8px">{{name}}<br/> X:{{x}}<br/> Y:{{y}}</button>',
             link: function(scope, element, attr) {
@@ -108,7 +106,7 @@
     });
     module.directive('buttonAsync', function() {
         return {
-            restrict: 'E',
+            restrict: 'AE',
             replace: true,
             template: '<button style="width:100px;height:100px;margin:8px">{{name}}<br/> X:{{x}}<br/> Y:{{y}}</button>',
             link: function(scope, element, attr) {

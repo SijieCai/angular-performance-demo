@@ -16,7 +16,7 @@
             $scope.value++;
             digest = 0;
             console.log('点击事件');
-        }
+        };
 
 
         $scope.getUnchangedValue = function() {
@@ -24,8 +24,9 @@
             // for (var i = 0; i < 3000000000; i++) {
             //     i = Math.sqrt(100) + i;
             // }
+            var i = 0;
             return i;
-        }
+        };
         $scope.unchangedValue = $scope.getUnchangedValue();
 
     }]);
